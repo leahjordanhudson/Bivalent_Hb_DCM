@@ -1,4 +1,4 @@
-%% Parametric Empirical Bayes (PEB), motion prediction model
+%% Parametric Empirical Bayes (PEB), perceptual decision uncertainty model
 % This script reproduces the effective connectivity results
 % reported in the Hudson et al. manuscript (Figure 3b, Table 1).
 
@@ -18,8 +18,8 @@ clear
 close all
 
 % Load GCM & design matrix 
-load('../data/GCM_Motion.mat');
-load('../dm/M_Motion.mat');
+load('../data/GCM_Perceptual.mat');
+load('../dm/M_Perceptual.mat');
 
 X = dm.X;
 K = width(X);
@@ -36,7 +36,7 @@ M.Xnames = X_labels;
 
 % Hierarchial (PEB) model comparison and averaging
 BMA = spm_dcm_peb_bmc(PEB);
-save('./BMA_search_AB_Motion.mat', 'BMA');
+save('./BMA_search_AB_Perceptual.mat', 'BMA');
 
 % Review BMA results
 % -----------------------------------------------------------------------
