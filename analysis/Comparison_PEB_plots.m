@@ -1,6 +1,6 @@
 % Produce comparison plots of overlayed modulatory connectivity parameters 
-% of the reversal learning and motion prediction models to aversive (left) 
-% and appetitive (right) stimuli as reported in the Hudson et al. 
+% of the reversal learning and perceptual decision uncertainty models to negative (left) 
+% and positive (right) feedback as reported in the Hudson et al. 
 % manuscript (Figure 3c)
 % -----------------------------------------------------------------------
 % This script relies on an adapted version of spm_plot_ci(E,C,x,j,s) - see 
@@ -33,7 +33,7 @@ addpath ../custom/
 load('./BMA_search_AB_Reversal.mat');
     pholder = [0.00000000000001; 0.00000000000001; 0.00000000000001]; % placeholders to ensure that results are positioned correctly as these results do not survive at Pp > .95
     rBMA = BMA;
-    rE = [rBMA.Ep(21:23); pholder(1:2); rBMA.Ep(16:19)]; % aversive and appetitive modulatory connectivity
+    rE = [rBMA.Ep(21:23); pholder(1:2); rBMA.Ep(16:19)]; % negative and positive modulatory connectivity
     rBMA.Cp = diag(rBMA.Cp);
     rC = [rBMA.Cp(21:23); pholder(1:2); rBMA.Cp(16:19)];
     rj = find([rBMA.Pp(21:23); pholder(1:2); rBMA.Pp(16:19)]); % pull the index of connectivity
@@ -42,10 +42,10 @@ load('./BMA_search_AB_Reversal.mat');
     ref_line_col = [101 99 96]/256;
     comp_bar_col = [220 191 182]/256;
 
-% Motion prediction model (comparison)
-load('./BMA_search_AB_Motion.mat');
+% Perceptual decision uncertainty model (comparison)
+load('./BMA_search_AB_Perceptual.mat');
     cBMA = BMA;
-    cE = [cBMA.Ep(21:25); cBMA.Ep(16:17); pholder(1:2)]; % aversive and appetitive modulatory connectivity
+    cE = [cBMA.Ep(21:25); cBMA.Ep(16:17); pholder(1:2)]; % negative and positive modulatory connectivity
     cBMA.Cp = diag(cBMA.Cp);
     cC = [cBMA.Cp(21:25); cBMA.Cp(16:17); pholder(1:2)];
     cj = 1:length(cC);
@@ -59,7 +59,7 @@ figure('Position', [200 200 1500 700]),
 spm_plot_ci(rE,rC,x,rj,s);
 hold on
 
-% Overlay motion predicition model 
+% Overlay perceptual decision uncertainty model 
 spm_plot_ci(cE,cC,x,cj,s);
 
 % Find and adjust covariance line
@@ -87,7 +87,7 @@ spm_plot_ci(cE,cC,x,cj,s);
             'EdgeColor', 'none', 'FaceAlpha', 0.6)
 
 % Add legends and labels
-legend([ep_bars(2), ep_bars(1)], {'Reversal', 'Motion'}, 'FontSize', 16);
+legend([ep_bars(2), ep_bars(1)], {'Reversal', 'Perceptual'}, 'FontSize', 15);
 
 xlim([0 10.5]);%(length(rj)+1.5)
 xlabel('Modulatory connectivity', 'FontSize', 20, 'FontWeight','bold');
@@ -105,4 +105,5 @@ set(findall(gca, '-property', 'FontName'), 'FontName', 'Helvetica');
 line([5.5 5.5], [-10 5], 'Color', [0.5 0.5 0.5], 'LineStyle', '--', 'HandleVisibility', 'off');
 
 hold off
-saveas(figure(1), './Reversal_Motion_EpCp.png');
+
+saveas(figure(1), './Reversal_Perceptual_EpCp.png');
