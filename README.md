@@ -1,7 +1,7 @@
-# Bidirectional_Hb_DCM
+# Bivalent_Hb_DCM
 This repository contains de-identified effective connectivity data and the corresponding code used to support the main findings in the Hudson et al. manuscript (DOI : *To be finalised*).
 
-The present study leverages ultra-high field (UHF) functional magnetic resonance imaging (fMRI) and dynamic causal modelling (DCM) to characterise bidirectional causal modulation of habenula function on midbrain monoaminergic and cortical pathways by negative and positive feedback.
+The present study leverages ultra-high field (UHF) functional magnetic resonance imaging (fMRI) and dynamic causal modelling (DCM) to characterise bivalent causal modulation of habenula function on midbrain monoaminergic and cortical pathways by negative and positive feedback.
 
 ## Reversal learning model
 The [Run_PEB_Reversal.m](analysis/Run_PEB_Reversal.m) script reproduces the DCM results of habenula effective connectivity during the reversal learning task.
