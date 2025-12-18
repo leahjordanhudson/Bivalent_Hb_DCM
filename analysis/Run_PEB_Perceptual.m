@@ -1,6 +1,6 @@
 %% Parametric Empirical Bayes (PEB), perceptual decision uncertainty model
 % This script reproduces the effective connectivity results
-% reported in the Hudson et al. manuscript (Figure 3b, Table 1).
+% reported in the Hudson et al. manuscript (Figure 3b, Supplementary Table 3).
 
 % -----------------------------------------------------------------------
 % Please ensure that your SPM12 folder (r7771) is listed in your MATLAB set
